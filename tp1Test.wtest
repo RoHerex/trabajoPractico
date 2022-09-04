@@ -1,0 +1,108 @@
+import Tp1.*
+
+test "ObjManzana"{
+	
+     manzana.color()
+     manzana.energiaQueProvee()
+     manzana.peso()
+     manzana.madurar()
+	 assert.that(manzana.esGrande())
+
+}
+
+test "ObjMandarina"{
+	
+     mandarina.color()
+     mandarina.energiaQueProvee()
+     mandarina.peso()
+     mandarina.madurar()
+	 assert.that(mandarina.esGrande())
+
+}
+
+test "ObjBanana"{
+	
+     mandarina.color()
+     mandarina.energiaQueProvee()
+     mandarina.peso()
+     assert.that(banana.esGrande())
+     
+     }
+     
+test "objMartin"{
+	
+	
+	martin.cantidadDeVecesJugadas()
+	martin.energia()
+	martin.reducirEnergia(cantidadDeEnergia)
+	martin.frutaComprada()
+	martin.hacerDeporte(deporte)
+	martin.nuevoAnio()
+	assert.that(martin.esAdulto())
+	assert.that(martin.tieneBajaEnergia())
+	assert.that(martin.estaFeliz())
+	martin.comprarFruta(unaFruta)
+	martin.hacerMadurarALaFruta()
+	martin.comer()
+	assert.that(martin.esDeportista())
+}     
+
+test "objJuana"{
+	
+	juana.cantidadDeVecesJugadas()	
+	juana.energia()
+	juana.reducirEnergia(cantidadDeEnergia)
+	juana.frutaComprada()
+	juana.hacerDeporte(deporte)
+	assert.that(juana.tieneBajaEnergia())
+	assert.that(juana.estaFeliz())
+	juana.comprarFruta(unaFruta)
+	juana.hacerMadurarALaFruta()
+	juana.comer()
+	assert.that(juana.esDeportista())
+}  
+
+test "objPepe"{
+	
+	pepe.cantidadDeVecesJugadas()	
+	pepe.energia()
+	pepe.reducirEnergia(cantidadDeEnergia)
+	pepe.frutaComprada()
+	pepe.hacerDeporte(deporte)
+	assert.that(pepe.tieneBajaEnergia())
+	assert.that(pepe.estaFeliz())
+	pepe.comprarFruta(unaFruta)
+	pepe.hacerMadurarALaFruta()
+	pepe.comer()
+	assert.that(pepe.esDeportista())
+	
+}
+
+test "objVoley"{
+	
+	voley.esJugadoPor(jugador)
+	assert.that(true)
+	
+}
+
+test "objFutbol"{
+	
+	futbol.esJugadoPor(jugador)
+	assert.that(true)
+	
+}
+test "objBasquet"{
+	
+   basquet.esJugadoPor(jugador)
+	assert.that(true)
+	
+}	
+	
+test "objEquipo"{
+	
+	equipo.asignarJugadores(delanDerecho, delanIzquierdo, defen)
+	assert.that(equipo.esEquipoDeDeportistas())
+	equipo.rotarPosiciones()
+	equipo.jugadorConMasEnergia()
+	
+}
