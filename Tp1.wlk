@@ -9,20 +9,24 @@ object amarillo{}
 
 object manzana{
 	var color = verde
-	var peso = 150
+	const peso = 150
 	var energiaQueProvee = 5 
 	
 		
 	method peso(){
-	 return peso	
+	 return 150	
 	}
 	
 	method esGrande(){
 	 return peso > 70	
 	}
-	
+    
+	method esFrutaMadura(){
+	   return color == rojo
+		}
+
 	method energiaQueProvee(){
-	 if(color == verde){
+	 if(self.esFrutaMadura()){
 	 return  5
 	 }else{
 	 return  14	
@@ -37,10 +41,11 @@ object manzana{
 	 color = rojo
 	 energiaQueProvee = 14
 	}
-}
+	
+}    
 
 object mandarina{
-	var color = naranja
+	const color = naranja
 	var peso = 60
 	var energiaQueProvee = 3 
 	
@@ -67,14 +72,17 @@ object mandarina{
 	method madurar(){
 	 peso = peso + peso * 40 / 100
 	 energiaQueProvee = 10	
-	}
+	 }
+	
+	 method esFrutaMadura(){
+	 return peso > 60
+		}
 	
 }
 
 object banana{
-	var color = amarillo
-	var peso = 59
-	var energiaQueProvee = 5
+	const peso = 59
+
 		
 	method peso(){
 	 return peso	
@@ -85,11 +93,11 @@ object banana{
 	}
 	
 	method energiaQueProvee(){
-	 return energiaQueProvee	
+	 return 5
 	}
 	
 	method color(){
-	 return color
+	 return amarillo
 	}
 	
 }
@@ -147,13 +155,9 @@ object martin{
 	}
 	
 	method hacerMadurarALaFruta(){
-	 if(self.frutaComprada() == manzana){
-	  manzana.madurar() 
-	 }
-	 if(self.frutaComprada() == mandarina){
-	  mandarina.madurar()  
+	  frutaComprada = frutaComprada.madurar()
 	 }	 
-   }
+	 
 	method comer(){
 	 energia = frutaComprada.energiaQueProvee() + energia
 	}
@@ -161,6 +165,10 @@ object martin{
 	method esDeportista(){
 	  return cantidadDeVecesJugadas % 2 == 0 and 0 == not true
 	 
+	}
+	
+	method frutaCompradaEs(fruta){
+	  return frutaComprada == fruta
 	}
 	
 }
@@ -210,23 +218,21 @@ object juana{
 		frutaComprada = unaFruta
 	}
 	
-	method hacerMadurarALaFruta(){
-	 if(self.frutaComprada() == manzana){
-	  manzana.madurar() 
+     method hacerMadurarALaFruta(){
+	  frutaComprada = frutaComprada.madurar()
 	 }
-	 if(self.frutaComprada() == mandarina){
-	  mandarina.madurar()  
-	 }	 
-   }
+	 
 	method comer(){
 	 energia = frutaComprada.energiaQueProvee() + energia
 	}
 	
 	method esDeportista(){
 	  return self.estaFeliz() and not self.tieneBajaEnergia()
-	 
 	}
 	
+	method frutaCompradaEs(fruta){
+	  return frutaComprada == fruta
+	}
 }
 
 object pepe{
@@ -250,11 +256,11 @@ object pepe{
 		energia -= cantidadDeEnergia
 	}
 	
-	method frutaComprada(){
+	 method frutaComprada(){
 	 return frutaComprada	
 	}
 	
-	method hacerDeporte(deporte){
+	 method hacerDeporte(deporte){
 		unDeporte = deporte
 		fuerza = fuerza + 3 
 		peso = peso - 1 
@@ -276,14 +282,10 @@ object pepe{
 		frutaComprada = unaFruta
 	}
 	
-	method hacerMadurarALaFruta(){
-	 if(self.frutaComprada() == manzana){
-	  manzana.madurar() 
+      method hacerMadurarALaFruta(){
+	  frutaComprada = frutaComprada.madurar()
 	 }
-	 if(self.frutaComprada() == mandarina){
-	  mandarina.madurar()  
-	 }	 
-   }
+	 
 	method comer(){
 	 energia = frutaComprada.energiaQueProvee() + energia
  }
@@ -292,18 +294,22 @@ object pepe{
 	  return true
 	}
 	
+	method frutaCompradaEs(fruta){
+	  return frutaComprada == fruta
+	}
+	
 }
 
 object voley{
 	
 	method esJugadoPor(jugador){
-	if(jugador.frutaComprada() == banana){
-	  return jugador.reducirEnergia(12)
-	}if(jugador.frutaComprada() == mandarina){
-	  return jugador.reducirEnergia(12)	
-	}else{
-	  return jugador.reducirEnergia(12)
-	}	
+	if (jugador.frutaCompradaEs(banana))
+	   jugador.reducirEnergia(12)
+	if(jugador.frutaCompradaEs(mandarina))
+	    jugador.reducirEnergia(8)	
+	else
+	   (jugador.reducirEnergia(5))
+		
   }	
 } 
 
@@ -311,13 +317,13 @@ object futbol{
 	
 	method esJugadoPor(jugador){
 	if (not jugador.tieneBajaEnergia()){
-	 return jugador.energia() - 10
+	 return jugador.reducirEnergia(10)
 	}else{
-	 return jugador.energia() - 4	
-	}
-	return jugador.cantidadDeVecesJugadas() + 1		
+	 return jugador.reducirEnergia(5) 
     }	
+   }
 }
+
 
 object basquet{
 	
@@ -361,3 +367,4 @@ object equipo{
   }
 	
 }
+
